@@ -9,6 +9,7 @@ import onnxruntime as ort
 
 from utils.db_utils import SegDetectorRepresenter
 from utils.imgproc_utils import letterbox
+from utils.log import LOG
 from utils.textblock import TextBlock, group_output, visualize_textblocks
 from utils.yolo_nms import postprocess_yolo
 
@@ -30,7 +31,6 @@ class ComicTextDetector:
         input_size: int = 1024,
         conf_thresh: float = 0.4,
         nms_thresh: float = 0.35,
-        verbose: bool = True,
     ) -> None:
         self.model_path = Path(model_path) if model_path else self.DEFAULT_MODEL_PATH
         self.providers = providers or ["CPUExecutionProvider"]
@@ -39,8 +39,6 @@ class ComicTextDetector:
         self.nms_thresh = nms_thresh
         self.seg_rep = SegDetectorRepresenter(thresh=0.3)
 
-        if verbose:
-            print(f"[detector] Loading model from: {self.model_path}")
         if not self.model_path.exists():
             raise FileNotFoundError(f"Model not found: {self.model_path}")
 
@@ -48,25 +46,9 @@ class ComicTextDetector:
             str(self.model_path),
             providers=self.providers,
         )
-        if verbose:
-            print(f"[detector] Model loaded with providers: {self.session.get_providers()}")
+        LOG.info("[detector] Model loaded (%s)", self.session.get_providers()[0])
 
         self.input_name = self.session.get_inputs()[0].name
-
-    def print_model_io(self) -> None:
-        print("\n=== Model Inputs ===")
-        for node in self.session.get_inputs():
-            print(f"  name : {node.name}")
-            print(f"  shape: {node.shape}")
-            print(f"  type : {node.type}")
-            print()
-
-        print("=== Model Outputs ===")
-        for node in self.session.get_outputs():
-            print(f"  name : {node.name}")
-            print(f"  shape: {node.shape}")
-            print(f"  type : {node.type}")
-            print()
 
     def _preprocess(self, image: np.ndarray) -> tuple[np.ndarray, int, int]:
         rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)

@@ -10,6 +10,7 @@ from google import genai
 from google.genai import types
 from google.genai.errors import ClientError
 
+from utils.log import LOG
 from utils.textblock import TextBlock
 
 DEFAULT_MODEL = "gemini-2.5-flash"
@@ -98,18 +99,12 @@ class GeminiTranslator:
         model: str | None = None,
         target_language: str = "English",
         batch_size: int = BATCH_SIZE,
-        verbose: bool = True,
     ) -> None:
         self.api_key = api_key or _load_api_key()
         self.model = _load_model(model)
         self.target_language = target_language
         self.batch_size = batch_size
-        self.verbose = verbose
         self.client = genai.Client(api_key=self.api_key)
-
-    def _log(self, message: str) -> None:
-        if self.verbose:
-            print(message)
 
     def _build_prompt(self, entries: list[dict]) -> str:
         compact = json.dumps(entries, ensure_ascii=False, separators=(",", ":"))
@@ -138,7 +133,7 @@ class GeminiTranslator:
                 if error.status_code != 429 or attempt == MAX_RETRIES - 1:
                     raise
                 wait = _parse_retry_seconds(error)
-                self._log(f"[translate] Rate limited on {model}, retrying in {wait:.0f}s...")
+                LOG.info("[translate] Rate limited on %s, retrying in %.0fs...", model, wait)
                 time.sleep(wait)
         if last_error:
             raise last_error
@@ -173,9 +168,12 @@ class GeminiTranslator:
             if batch_idx > 0:
                 time.sleep(BATCH_DELAY_SEC)
 
-            self._log(
-                f"[translate] Batch {batch_idx + 1}/{len(batches)} "
-                f"({len(batch)} blocks, model={self.model})..."
+            LOG.info(
+                "[translate] Batch %d/%d (%d blocks, model=%s)",
+                batch_idx + 1,
+                len(batches),
+                len(batch),
+                self.model,
             )
 
             translated = False
@@ -187,7 +185,7 @@ class GeminiTranslator:
                     break
                 except ClientError as error:
                     if error.status_code == 429:
-                        self._log(f"[translate] {model} quota/rate limit hit, trying next model...")
+                        LOG.info("[translate] %s quota/rate limit hit, trying next model...", model)
                         continue
                     raise
 
@@ -211,10 +209,9 @@ class GeminiTranslator:
             entries.append({"index": i, "text": source})
 
         if not entries:
-            self._log("[translate] No text to translate.")
             return text_blocks
 
-        self._log(f"[translate] Translating {len(entries)} blocks to {self.target_language}...")
+        LOG.info("[translate] Translating %d blocks to %s...", len(entries), self.target_language)
         translations = self.translate_texts(entries)
         for i, block in enumerate(text_blocks):
             if block.get_text():

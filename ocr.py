@@ -6,6 +6,7 @@ import cv2
 import numpy as np
 from PIL import Image
 
+from utils.log import LOG
 from utils.textblock import TextBlock
 
 
@@ -58,20 +59,14 @@ class ComicTextRecognizer:
     def __init__(
         self,
         media_type: MediaType = MediaType.MANGA,
-        verbose: bool = True,
     ) -> None:
         self.media_type = media_type
-        self.verbose = verbose
         self._manga_ocr = None
         self._rapid_engines: dict[str, object] = {}
 
-    def _log(self, message: str) -> None:
-        if self.verbose:
-            print(message)
-
     def _get_manga_ocr(self):
         if self._manga_ocr is None:
-            self._log("[ocr] Loading manga-ocr (ONNX)...")
+            LOG.info("[ocr] Loading manga-ocr...")
             from manga_ocr import MangaOcr
 
             self._manga_ocr = MangaOcr()
@@ -79,6 +74,7 @@ class ComicTextRecognizer:
 
     def _get_rapid_ocr(self, lang_key: str):
         if lang_key not in self._rapid_engines:
+            LOG.info("[ocr] Loading RapidOCR (%s)...", lang_key)
             from rapidocr import EngineType, LangRec, OCRVersion, RapidOCR
 
             lang_map = {
@@ -88,7 +84,6 @@ class ComicTextRecognizer:
                 "ja": LangRec.JAPAN,
             }
             lang_type = lang_map.get(lang_key, LangRec.CH)
-            self._log(f"[ocr] Loading RapidOCR ({lang_key})...")
             self._rapid_engines[lang_key] = RapidOCR(
                 params={
                     "Det.engine_type": EngineType.ONNXRUNTIME,
@@ -142,7 +137,7 @@ class ComicTextRecognizer:
         return self._recognize_manga(crop)
 
     def recognize(self, image: np.ndarray, text_blocks: list[TextBlock]) -> list[TextBlock]:
-        self._log(f"[ocr] Recognizing {len(text_blocks)} text blocks...")
+        LOG.info("[ocr] Recognizing %d blocks...", len(text_blocks))
         for block in text_blocks:
             block.text = self.recognize_block(image, block)
         return text_blocks
