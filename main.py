@@ -6,6 +6,7 @@ import cv2
 
 from detector import ComicTextDetector
 from ocr import ComicTextRecognizer, MediaType
+from translator import GeminiTranslator
 
 
 def main() -> None:
@@ -15,12 +16,13 @@ def main() -> None:
     input_path = Path("input/manga_input_1.jpg")
     output_dir = Path("output")
     output_dir.mkdir(exist_ok=True)
+    target_language = "English"
 
     image = cv2.imread(str(input_path))
     if image is None:
         raise FileNotFoundError(f"Could not read image: {input_path}")
 
-    print("=== Comic Text Detector + OCR ===\n")
+    print("=== Comic Translator (Detect → OCR → Translate) ===\n")
 
     detector = ComicTextDetector()
     result = detector.detect(image)
@@ -31,12 +33,19 @@ def main() -> None:
     recognizer = ComicTextRecognizer(media_type=MediaType.MANGA)
     recognizer.recognize(image, result.text_blocks)
 
-    ocr_entries = []
+    translator = GeminiTranslator(target_language=target_language)
+    translator.translate_blocks(result.text_blocks)
+
+    entries = []
     for i, blk in enumerate(result.text_blocks):
-        text = blk.get_text()
+        source = blk.get_text()
+        translation = blk.translation or ""
         vertical = "vertical" if blk.vertical else "horizontal"
-        print(f"  [{i}] {blk.language} ({vertical}): {text or '(empty)'}")
-        ocr_entries.append(
+        print(f"  [{i}] {blk.language} ({vertical})")
+        print(f"       OCR: {source or '(empty)'}")
+        print(f"       EN:  {translation or '(empty)'}")
+
+        entries.append(
             {
                 "index": i,
                 "language": blk.language,
@@ -44,23 +53,25 @@ def main() -> None:
                 "bbox": [int(x) for x in blk.xyxy],
                 "lines": len(blk.lines),
                 "text": blk.text,
-                "text_joined": text,
+                "text_joined": source,
+                "translation": translation,
+                "target_language": target_language,
             }
         )
 
     vis = detector.visualize(image, result)
     mask_path = output_dir / "mask.png"
     vis_path = output_dir / "detected.jpg"
-    ocr_path = output_dir / "ocr.json"
+    results_path = output_dir / "translations.json"
 
     cv2.imwrite(str(mask_path), result.mask)
     cv2.imwrite(str(vis_path), vis)
-    with open(ocr_path, "w", encoding="utf-8") as f:
-        json.dump(ocr_entries, f, ensure_ascii=False, indent=2)
+    with open(results_path, "w", encoding="utf-8") as f:
+        json.dump(entries, f, ensure_ascii=False, indent=2)
 
     print(f"\nSaved mask to {mask_path}")
     print(f"Saved visualization to {vis_path}")
-    print(f"Saved OCR results to {ocr_path}")
+    print(f"Saved translations to {results_path}")
 
 
 if __name__ == "__main__":

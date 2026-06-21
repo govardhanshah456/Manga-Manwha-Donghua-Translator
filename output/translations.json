@@ -1,0 +1,434 @@
+[
+  {
+    "index": 0,
+    "language": "unknown",
+    "vertical": true,
+    "bbox": [
+      15,
+      24,
+      21,
+      48
+    ],
+    "lines": 1,
+    "text": [
+      "人の隣にも．．．．"
+    ],
+    "text_joined": "人の隣にも．．．．",
+    "translation": "Even next to people...",
+    "target_language": "English"
+  },
+  {
+    "index": 1,
+    "language": "unknown",
+    "vertical": true,
+    "bbox": [
+      40,
+      5,
+      56,
+      30
+    ],
+    "lines": 2,
+    "text": [
+      "何故ない次の時を飛く一瞬押しは"
+    ],
+    "text_joined": "何故ない次の時を飛く一瞬押しは",
+    "translation": "Why isn't there a next time? A momentary push, flying away...",
+    "target_language": "English"
+  },
+  {
+    "index": 2,
+    "language": "unknown",
+    "vertical": true,
+    "bbox": [
+      44,
+      5,
+      61,
+      40
+    ],
+    "lines": 2,
+    "text": [
+      "「放棄法」に行政ない次の時を明らせ"
+    ],
+    "text_joined": "「放棄法」に行政ない次の時を明らせ",
+    "translation": "Clarify when the 'Abandonment Law' will next be without administrative action.",
+    "target_language": "English"
+  },
+  {
+    "index": 3,
+    "language": "unknown",
+    "vertical": true,
+    "bbox": [
+      162,
+      2,
+      169,
+      30
+    ],
+    "lines": 1,
+    "text": [
+      "我が国に"
+    ],
+    "text_joined": "我が国に",
+    "translation": "To our country...",
+    "target_language": "English"
+  },
+  {
+    "index": 4,
+    "language": "unknown",
+    "vertical": true,
+    "bbox": [
+      155,
+      2,
+      178,
+      50
+    ],
+    "lines": 2,
+    "text": [
+      "旅館が我が国に攻めてきました"
+    ],
+    "text_joined": "旅館が我が国に攻めてきました",
+    "translation": "An inn has attacked our country.",
+    "target_language": "English"
+  },
+  {
+    "index": 5,
+    "language": "unknown",
+    "vertical": true,
+    "bbox": [
+      9,
+      85,
+      19,
+      118
+    ],
+    "lines": 1,
+    "text": [
+      "助けてーっマジで"
+    ],
+    "text_joined": "助けてーっマジで",
+    "translation": "Help me! Seriously!",
+    "target_language": "English"
+  },
+  {
+    "index": 6,
+    "language": "unknown",
+    "vertical": false,
+    "bbox": [
+      68,
+      88,
+      84,
+      112
+    ],
+    "lines": 1,
+    "text": [
+      "先上私の説明な努力の下"
+    ],
+    "text_joined": "先上私の説明な努力の下",
+    "translation": "First, thanks to my efforts to explain...",
+    "target_language": "English"
+  },
+  {
+    "index": 7,
+    "language": "unknown",
+    "vertical": true,
+    "bbox": [
+      80,
+      90,
+      86,
+      110
+    ],
+    "lines": 1,
+    "text": [
+      "数上間の急ぎな"
+    ],
+    "text_joined": "数上間の急ぎな",
+    "translation": "The rush of several days...",
+    "target_language": "English"
+  },
+  {
+    "index": 8,
+    "language": "unknown",
+    "vertical": true,
+    "bbox": [
+      113,
+      65,
+      119,
+      85
+    ],
+    "lines": 1,
+    "text": [
+      "我が家は"
+    ],
+    "text_joined": "我が家は",
+    "translation": "Our home is...",
+    "target_language": "English"
+  },
+  {
+    "index": 9,
+    "language": "unknown",
+    "vertical": true,
+    "bbox": [
+      109,
+      65,
+      124,
+      94
+    ],
+    "lines": 2,
+    "text": [
+      "しかし自分以降は回収負の種と"
+    ],
+    "text_joined": "しかし自分以降は回収負の種と",
+    "translation": "However, after me, it's a seed of unrecoverable loss.",
+    "target_language": "English"
+  },
+  {
+    "index": 10,
+    "language": "unknown",
+    "vertical": false,
+    "bbox": [
+      145,
+      77,
+      164,
+      83
+    ],
+    "lines": 1,
+    "text": [
+      "無駄で"
+    ],
+    "text_joined": "無駄で",
+    "translation": "It's pointless.",
+    "target_language": "English"
+  },
+  {
+    "index": 11,
+    "language": "unknown",
+    "vertical": false,
+    "bbox": [
+      34,
+      132,
+      41,
+      142
+    ],
+    "lines": 1,
+    "text": [
+      "あの"
+    ],
+    "text_joined": "あの",
+    "translation": "Um...",
+    "target_language": "English"
+  },
+  {
+    "index": 12,
+    "language": "unknown",
+    "vertical": true,
+    "bbox": [
+      25,
+      130,
+      37,
+      174
+    ],
+    "lines": 1,
+    "text": [
+      "お父が一番だから"
+    ],
+    "text_joined": "お父が一番だから",
+    "translation": "Because Dad's the best.",
+    "target_language": "English"
+  },
+  {
+    "index": 13,
+    "language": "unknown",
+    "vertical": true,
+    "bbox": [
+      62,
+      128,
+      68,
+      152
+    ],
+    "lines": 1,
+    "text": [
+      "寝てしょ？"
+    ],
+    "text_joined": "寝てしょ？",
+    "translation": "You're sleeping, aren't you?",
+    "target_language": "English"
+  },
+  {
+    "index": 14,
+    "language": "unknown",
+    "vertical": true,
+    "bbox": [
+      67,
+      128,
+      73,
+      148
+    ],
+    "lines": 1,
+    "text": [
+      "なったら"
+    ],
+    "text_joined": "なったら",
+    "translation": "If it happens.",
+    "target_language": "English"
+  },
+  {
+    "index": 15,
+    "language": "unknown",
+    "vertical": true,
+    "bbox": [
+      71,
+      128,
+      78,
+      152
+    ],
+    "lines": 1,
+    "text": [
+      "こんな事になったら"
+    ],
+    "text_joined": "こんな事になったら",
+    "translation": "If it comes to this...",
+    "target_language": "English"
+  },
+  {
+    "index": 16,
+    "language": "unknown",
+    "vertical": false,
+    "bbox": [
+      77,
+      158,
+      96,
+      174
+    ],
+    "lines": 1,
+    "text": [
+      "ボロ"
+    ],
+    "text_joined": "ボロ",
+    "translation": "It's ruined!",
+    "target_language": "English"
+  },
+  {
+    "index": 17,
+    "language": "unknown",
+    "vertical": true,
+    "bbox": [
+      25,
+      220,
+      41,
+      244
+    ],
+    "lines": 2,
+    "text": [
+      "数日変化を求めるといええ嫌いでいわ"
+    ],
+    "text_joined": "数日変化を求めるといええ嫌いでいわ",
+    "translation": "You want things to change for a few days, but no, I hate it.",
+    "target_language": "English"
+  },
+  {
+    "index": 18,
+    "language": "unknown",
+    "vertical": true,
+    "bbox": [
+      31,
+      220,
+      46,
+      249
+    ],
+    "lines": 2,
+    "text": [
+      "病院にも簡単感心を決めるないが"
+    ],
+    "text_joined": "病院にも簡単感心を決めるないが",
+    "translation": "I'm not easily convinced by hospitals, but...",
+    "target_language": "English"
+  },
+  {
+    "index": 19,
+    "language": "unknown",
+    "vertical": false,
+    "bbox": [
+      59,
+      199,
+      77,
+      235
+    ],
+    "lines": 1,
+    "text": [
+      "多少こそ知る対象的なと平和軍文明記を信じ"
+    ],
+    "text_joined": "多少こそ知る対象的なと平和軍文明記を信じ",
+    "translation": "I do know a bit about objective matters, and I believe in the Peace Army's civilization records.",
+    "target_language": "English"
+  },
+  {
+    "index": 20,
+    "language": "unknown",
+    "vertical": false,
+    "bbox": [
+      61,
+      186,
+      96,
+      224
+    ],
+    "lines": 1,
+    "text": [
+      "最高級を平和室とかすり樹人生活には何か何かと思わないのかは知らない"
+    ],
+    "text_joined": "最高級を平和室とかすり樹人生活には何か何かと思わないのかは知らない",
+    "translation": "I wonder if you ever think about dedicating the highest quality to a peace room, or to a treeman's life, or things like that.",
+    "target_language": "English"
+  },
+  {
+    "index": 21,
+    "language": "unknown",
+    "vertical": true,
+    "bbox": [
+      71,
+      201,
+      78,
+      228
+    ],
+    "lines": 1,
+    "text": [
+      "東北に平和の行けやかな"
+    ],
+    "text_joined": "東北に平和の行けやかな",
+    "translation": "May peace go to Tohoku.",
+    "target_language": "English"
+  },
+  {
+    "index": 22,
+    "language": "unknown",
+    "vertical": true,
+    "bbox": [
+      87,
+      198,
+      93,
+      218
+    ],
+    "lines": 1,
+    "text": [
+      "秋四郎をよくしく"
+    ],
+    "text_joined": "秋四郎をよくしく",
+    "translation": "Please take care of Akishiro.",
+    "target_language": "English"
+  },
+  {
+    "index": 23,
+    "language": "ja",
+    "vertical": true,
+    "bbox": [
+      129,
+      191,
+      156,
+      231
+    ],
+    "lines": 5,
+    "text": [
+      "坂草はひけの平海成長で気じられた「世界日中国語の事情は大切」"
+    ],
+    "text_joined": "坂草はひけの平海成長で気じられた「世界日中国語の事情は大切」",
+    "translation": "Sakakusa was recognized for stating, 'The matters of World Japan-China language are important,' with the growth of Hikenohirakai.",
+    "target_language": "English"
+  }
+]
